@@ -1,0 +1,365 @@
+# 文件：yuproject1/file_search_results.log
+# 说明：用于记录“文件侧独立程序（Java/C++）检索片名包含关键字”的实验结果（不依赖 DB，不影响现有数据）
+# 注意：本日志初始为模板。请按下述命令编译/运行后，将程序原样输出粘贴到对应位置。
+
+================================================================================
+[元信息]
+- 记录时间（本地）：<填入 YYYY-MM-DD HH:MM:SS>
+- 操作系统：<填入，例如 Ubuntu 22.04>
+- CPU / 内存：<填入，例如 8C / 16GB>
+- Java 版本：<填入 `java -version` 输出首行>
+- Javac 版本：<填入 `javac -version` 输出>
+- g++ 版本：<填入 `g++ --version` 第一行>
+- 数据文件：1_data/movies.csv（CSV，首行包含标题列）
+- 目标列：title
+- 关键字（示例）："XXX"（大小写不敏感，除非明确指定 --case-sensitive）
+
+================================================================================
+[准备步骤与命令记录（仅一次性准备，不需每次重复）]
+
+# 1) 编译 Java 独立程序
+# 输出目录：out
+javac -d out 3_java_src/FileSearchStandalone.java
+
+# 2) 编译 C++ 独立程序
+g++ -O2 -std=c++17 -o file_search_standalone 3_cpp_src/file_search_standalone.cpp
+
+================================================================================
+[实验说明]
+- 每个关键字建议跑 3 次，记录每次“Elapsed: N ms”和“Throughput”。
+- 默认大小写不敏感；如需严格大小写，添加 --case-sensitive。
+- 为避免 I/O 干扰，建议每次运行前尽量保持同等系统负载（但不强制）。
+
+================================================================================
+[实验命令模板（Java）]
+# 大小写不敏感（推荐）
+java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"
+
+# 大小写敏感
+java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX" --case-sensitive
+
+# 仅扫描前 N 行（调试用）
+java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX" --limit 500000
+
+================================================================================
+[实验命令模板（C++）]
+# 大小写不敏感（推荐）
+./file_search_standalone --file 1_data/movies.csv --keyword "XXX"
+
+# 大小写敏感
+./file_search_standalone --file 1_data/movies.csv --keyword "XXX" --case-sensitive
+
+# 仅扫描前 N 行（调试用）
+./file_search_standalone --file 1_data/movies.csv --keyword "XXX" --limit 500000
+
+================================================================================
+[结果粘贴区 - 关键字：XXX（大小写不敏感）Run #1 - Java]
+# 将 Java 程序的标准输出原样粘贴在下方（包含 "== File Search Summary ==" 及所有行）
+<粘贴开始>
+（示例）
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : <数字>
+  Matches        : <数字>
+  Elapsed        : <毫秒> ms
+  Throughput     : <rows/sec>
+<粘贴结束>
+
+--------------------------------------------------------------------------------
+[结果粘贴区 - 关键字：XXX（大小写不敏感）Run #1 - C++]
+# 将 C++ 程序的标准输出原样粘贴在下方
+<粘贴开始>
+（示例）
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : <数字>
+  Matches        : <数字>
+  Elapsed        : <毫秒> ms
+  Throughput     : <rows/sec>
+<粘贴结束>
+
+--------------------------------------------------------------------------------
+[结果粘贴区 - 关键字：XXX（大小写不敏感）Run #2 - Java]
+<粘贴开始>
+（粘贴 Java 第二次运行结果）
+<粘贴结束>
+
+--------------------------------------------------------------------------------
+[结果粘贴区 - 关键字：XXX（大小写不敏感）Run #2 - C++]
+<粘贴开始>
+（粘贴 C++ 第二次运行结果）
+<粘贴结束>
+
+--------------------------------------------------------------------------------
+[结果粘贴区 - 关键字：XXX（大小写不敏感）Run #3 - Java]
+<粘贴开始>
+（粘贴 Java 第三次运行结果）
+<粘贴结束>
+
+--------------------------------------------------------------------------------
+[结果粘贴区 - 关键字：XXX（大小写不敏感）Run #3 - C++]
+<粘贴开始>
+（粘贴 C++ 第三次运行结果）
+<粘贴结束>
+
+================================================================================
+[可选扩展：关键字 STAR（与 README/SQL 对齐）]
+# 如果你也想与 SQL 中的 'STAR'/UPPER(title) LIKE '%STAR%' 对齐，可复制上方“结果粘贴区”结构，换成关键字 STAR：
+# 示例命令：
+#   java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "STAR"
+#   ./file_search_standalone --file 1_data/movies.csv --keyword "STAR"
+
+================================================================================
+[汇总（手动填写统计值）]
+- 关键字：XXX（大小写不敏感）
+  - Java 三次耗时（ms）：<t1> / <t2> / <t3>；平均：<t_avg_java> ms
+  - C++  三次耗时（ms）：<t1> / <t2> / <t3>；平均：<t_avg_cpp>  ms
+  - 匹配数一致性：Java=<m_java>，C++=<m_cpp>（应一致；否则需核对大小写开关与列名）
+  - 说明/备注：<任意说明>
+
+- 关键字：STAR（可选）
+  - Java 三次耗时（ms）：<t1> / <t2> / <t3>；平均：<t_avg_java> ms
+  - C++  三次耗时（ms）：<t1> / <t2> / <t3>；平均：<t_avg_cpp>  ms
+  - 匹配数一致性：Java=<m_java>，C++=<m_cpp>
+  - 说明/备注：<任意说明>
+
+================================================================================
+[注意事项]
+- Java/C++ 两个程序都采用流式读取（逐行 BufferedReader/ifstream），不会将整个 CSV 读入内存。
+- 默认以列名匹配（大小写不敏感）定位到 `title` 列；请确认 CSV 首行确实包含 `title`。
+- 如果要与数据库 SQL 语义完全一致（例如 UPPER(title) LIKE '%XXX%'），请使用默认“不区分大小写”或在 Java/C++ 侧等价处理。
+- 若需要快速预跑，可使用 --limit 参数先测小样本，确认正确后再跑全量。
+- 本日志仅记录“文件侧”结果，不会修改数据库，也不会影响 `experiment_results.log`。
+
+# 结束
+================================================================================
+[run_file_search.sh] 2025-10-19T19:35:06+08:00
+Repo root     : /home/fideow/yuproject1
+CSV file      : 1_data/movies.csv
+Column        : title
+Runs per kw   : 3
+Case-sensitive: 0
+Limit         : <unset>
+--- System ---
+Linux fideow-Yoga-14sIHU-2021-O 6.8.0-83-generic #83~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Sep  9 18:19:47 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+--- Java ---
+  openjdk version "22.0.2" 2024-07-16
+  OpenJDK Runtime Environment Corretto-22.0.2.9.1 (build 22.0.2+9-FR)
+  OpenJDK 64-Bit Server VM Corretto-22.0.2.9.1 (build 22.0.2+9-FR, mixed mode, sharing)
+  javac 22.0.2
+--- g++ ---
+  g++ (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0
+--- CSV stats ---
+  621067 1_data/movies.csv
+================================================================================
+
+---- Java compile complete ----
+  Source: 3_java_src/FileSearchStandalone.java
+  Out   : out
+
+---- C++ compile complete ----
+  Source: 3_cpp_src/file_search_standalone.cpp
+  Bin   : build/file_search_standalone
+
+================================================================================
+[Keyword] XXX
+================================================================================
+
+[Java] Run #1 - keyword: XXX
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 441 ms
+  Throughput     : 1408312.93 rows/sec
+
+[Java] Run #2 - keyword: XXX
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 513 ms
+  Throughput     : 1210654.97 rows/sec
+
+[Java] Run #3 - keyword: XXX
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 457 ms
+  Throughput     : 1359006.56 rows/sec
+
+[C++] Run #1 - keyword: XXX
+$ build/file_search_standalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 181 ms
+  Throughput     : 3431303.87 rows/sec
+
+[C++] Run #2 - keyword: XXX
+$ build/file_search_standalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 181 ms
+  Throughput     : 3431303.87 rows/sec
+
+[C++] Run #3 - keyword: XXX
+$ build/file_search_standalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 186 ms
+  Throughput     : 3339064.52 rows/sec
+
+================================================================================
+[Keyword] STAR
+================================================================================
+
+[Java] Run #1 - keyword: STAR
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "STAR"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : STAR (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 2556
+  Elapsed        : 413 ms
+  Throughput     : 1503791.77 rows/sec
+
+[Java] Run #2 - keyword: STAR
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "STAR"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : STAR (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 2556
+  Elapsed        : 424 ms
+  Throughput     : 1464778.30 rows/sec
+
+[Java] Run #3 - keyword: STAR
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "STAR"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : STAR (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 2556
+  Elapsed        : 479 ms
+  Throughput     : 1296588.73 rows/sec
+
+[C++] Run #1 - keyword: STAR
+$ build/file_search_standalone --file 1_data/movies.csv --keyword "STAR"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : STAR (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 2556
+  Elapsed        : 213 ms
+  Throughput     : 2915802.82 rows/sec
+
+[C++] Run #2 - keyword: STAR
+$ build/file_search_standalone --file 1_data/movies.csv --keyword "STAR"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : STAR (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 2556
+  Elapsed        : 193 ms
+  Throughput     : 3217958.55 rows/sec
+
+[C++] Run #3 - keyword: STAR
+$ build/file_search_standalone --file 1_data/movies.csv --keyword "STAR"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : STAR (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 2556
+  Elapsed        : 195 ms
+  Throughput     : 3184953.85 rows/sec
+
+################# File-side experiments completed at 2025-10-19T19:35:12+08:00 #################
+================================================================================
+[run_file_search.sh] 2025-10-19T20:34:06+08:00
+Repo root     : /home/fideow/yuproject1
+CSV file      : 1_data/movies.csv
+Column        : title
+Runs per kw   : 3
+Case-sensitive: 0
+Limit         : <unset>
+--- System ---
+Linux fideow-Yoga-14sIHU-2021-O 6.8.0-83-generic #83~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Sep  9 18:19:47 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+--- Java ---
+  openjdk version "22.0.2" 2024-07-16
+  OpenJDK Runtime Environment Corretto-22.0.2.9.1 (build 22.0.2+9-FR)
+  OpenJDK 64-Bit Server VM Corretto-22.0.2.9.1 (build 22.0.2+9-FR, mixed mode, sharing)
+  javac 22.0.2
+--- g++ ---
+  g++ (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0
+--- CSV stats ---
+  621067 1_data/movies.csv
+================================================================================
+
+---- Java compile complete ----
+  Source: 3_java_src/FileSearchStandalone.java
+  Out   : out
+
+---- C++ compile complete ----
+  Source: 3_cpp_src/file_search_standalone.cpp
+  Bin   : build/file_search_standalone
+
+================================================================================
+[Keyword] XXX
+================================================================================
+
+[Java] Run #1 - keyword: XXX
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 441 ms
+  Throughput     : 1408312.93 rows/sec
+
+[Java] Run #2 - keyword: XXX
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"   --column title
+== File Search Summary ==
+  File           : 1_data/movies.csv
+  Column         : title
+  Keyword        : XXX (case-insensitive)
+  Scanned rows   : 621066
+  Matches        : 68
+  Elapsed        : 452 ms
+  Throughput     : 1374039.82 rows/sec
+
+[Java] Run #3 - keyword: XXX
+$ java -cp out FileSearchStandalone --file 1_data/movies.csv --keyword "XXX"   --column title

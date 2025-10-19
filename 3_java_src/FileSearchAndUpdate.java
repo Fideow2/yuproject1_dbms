@@ -55,9 +55,9 @@ public class FileSearchAndUpdate {
         }
     }
 
-    
-    
-    
+
+
+
     private static void cmdPreview(String[] args) throws IOException {
         String file = null;
         int lines = 10;
@@ -88,14 +88,14 @@ public class FileSearchAndUpdate {
         }
     }
 
-    
-    
-    
+
+
+
     private static void cmdSearchMovies(String[] args) throws IOException {
         String file = null;
         String keyword = null;
         boolean caseSensitive = false;
-        Long limit = null; 
+        Long limit = null;
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
@@ -144,7 +144,7 @@ public class FileSearchAndUpdate {
                 }
                 List<String> cols = parseCsvLine(line);
                 if (titleIdx >= cols.size()) {
-                    
+
                     continue;
                 }
                 String title = cols.get(titleIdx);
@@ -172,9 +172,9 @@ public class FileSearchAndUpdate {
         }
     }
 
-    
-    
-    
+
+
+
     private static void cmdUpdatePersons(String[] args) throws IOException {
         String input = null;
         String output = null;
@@ -183,7 +183,7 @@ public class FileSearchAndUpdate {
         boolean inPlace = false;
         String backupExt = ".bak";
         boolean caseInsensitive = false;
-        Long limit = null; 
+        Long limit = null;
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
@@ -229,7 +229,7 @@ public class FileSearchAndUpdate {
         boolean tempUsed = false;
 
         if (inPlace) {
-            
+
             outFile = new File(inFile.getParentFile(), inFile.getName() + ".tmp.updating");
             tempUsed = true;
         } else {
@@ -251,14 +251,14 @@ public class FileSearchAndUpdate {
 
             String header = br.readLine();
             if (header == null) {
-                
-                
+
+
             } else {
                 headerCols = parseCsvLine(header);
                 nameIdx = indexOfIgnoreCase(headerCols, "person_name");
                 if (nameIdx < 0) {
-                    
-                    
+
+
                     throw new IllegalStateException("Cannot find 'person_name' column in header: " + header);
                 }
                 bw.write(header);
@@ -286,21 +286,21 @@ public class FileSearchAndUpdate {
                 bw.write('\n');
             }
         } catch (IOException ioe) {
-            
+
             if (tempUsed && outFile.exists()) {
                 outFile.delete();
             }
             throw ioe;
         }
 
-        
+
         if (inPlace) {
             File backupFile = new File(inFile.getAbsolutePath() + backupExt);
             if (backupFile.exists() && !backupFile.delete()) {
                 throw new IOException("Failed to delete existing backup: " + backupFile.getAbsolutePath());
             }
             if (!inFile.renameTo(backupFile)) {
-                
+
                 copyFile(inFile, backupFile);
                 if (!inFile.delete()) {
                     throw new IOException("Failed to delete original after backup copy: " + inFile.getAbsolutePath());
@@ -308,7 +308,7 @@ public class FileSearchAndUpdate {
             }
             File finalFile = new File(inFile.getAbsolutePath());
             if (!outFile.renameTo(finalFile)) {
-                
+
                 copyFile(outFile, finalFile);
                 if (!outFile.delete()) {
                     throw new IOException("Failed to delete temp file after manual move: " + outFile.getAbsolutePath());
@@ -335,9 +335,9 @@ public class FileSearchAndUpdate {
         }
     }
 
-    
-    
-    
+
+
+
 
     private static BufferedReader newBufferedReader(String path) throws IOException {
         return new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8), 1 << 20);
@@ -393,11 +393,11 @@ public class FileSearchAndUpdate {
         System.exit(code);
     }
 
-    
-    
-    
 
-    
+
+
+
+
     private static List<String> parseCsvLine(String line) {
         List<String> out = new ArrayList<>();
         if (line == null) {
@@ -412,11 +412,11 @@ public class FileSearchAndUpdate {
             if (inQuotes) {
                 if (ch == '"') {
                     if (i + 1 < line.length() && line.charAt(i + 1) == '"') {
-                        
+
                         cur.append('"');
                         i += 2;
                     } else {
-                        
+
                         inQuotes = false;
                         i++;
                     }
@@ -442,7 +442,7 @@ public class FileSearchAndUpdate {
         return out;
     }
 
-    
+
     private static String toCsvLine(List<String> fields) {
         StringBuilder sb = new StringBuilder();
         for (int idx = 0; idx < fields.size(); idx++) {
@@ -465,7 +465,7 @@ public class FileSearchAndUpdate {
         if (!needQuote) {
             return s;
         }
-        
+
         String escaped = s.replace("\"", "\"\"");
         return "\"" + escaped + "\"";
     }
@@ -482,7 +482,7 @@ public class FileSearchAndUpdate {
         if (input == null || input.isEmpty() || from == null || from.isEmpty()) {
             return input;
         }
-        
+
         String lowerInput = input.toLowerCase();
         String lowerFrom = from.toLowerCase();
         StringBuilder out = new StringBuilder(input.length());

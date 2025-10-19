@@ -1,0 +1,121 @@
+--- 准备阶段：将关键字搜索SQL文件复制到容器 ---
+SQL 文件 'keyword_search_test.sql' 已成功复制到所有容器。
+
+
+################# 开始第 1 / 3 轮关键字搜索测试 #################
+
+--- [测试 1] PostgreSQL：关键字搜索 ---
+  > 重启容器以清空缓存...
+  > 执行关键字搜索查询...
+Timing is on.
+ count 
+-------
+    68
+(1 row)
+
+Time: 78.826 ms
+ count 
+-------
+  2556
+(1 row)
+
+Time: 83.924 ms
+
+--- [测试 2] openGauss：关键字搜索 ---
+  > 重启容器以清空缓存...
+  > 执行关键字搜索查询...
+ count 
+-------
+    68
+(1 row)
+
+total time: 306  ms
+[openGauss keyword-search] stmt 1 time: 335 ms
+ count 
+-------
+  2556
+(1 row)
+
+total time: 260  ms
+[openGauss keyword-search] stmt 2 time: 273 ms
+
+
+################# 开始第 2 / 3 轮关键字搜索测试 #################
+
+--- [测试 1] PostgreSQL：关键字搜索 ---
+  > 重启容器以清空缓存...
+  > 执行关键字搜索查询...
+Timing is on.
+ count 
+-------
+    68
+(1 row)
+
+Time: 80.606 ms
+ count 
+-------
+  2556
+(1 row)
+
+Time: 82.865 ms
+
+--- [测试 2] openGauss：关键字搜索 ---
+  > 重启容器以清空缓存...
+  > 执行关键字搜索查询...
+ count 
+-------
+    68
+(1 row)
+
+total time: 281  ms
+[openGauss keyword-search] stmt 1 time: 294 ms
+ count 
+-------
+  2556
+(1 row)
+
+total time: 252  ms
+[openGauss keyword-search] stmt 2 time: 267 ms
+
+
+################# 开始第 3 / 3 轮关键字搜索测试 #################
+
+--- [测试 1] PostgreSQL：关键字搜索 ---
+  > 重启容器以清空缓存...
+  > 执行关键字搜索查询...
+Timing is on.
+ count 
+-------
+    68
+(1 row)
+
+Time: 93.018 ms
+ count 
+-------
+  2556
+(1 row)
+
+Time: 87.250 ms
+
+--- [测试 2] openGauss：关键字搜索 ---
+  > 重启容器以清空缓存...
+  > 执行关键字搜索查询...
+ count 
+-------
+    68
+(1 row)
+
+total time: 276  ms
+[openGauss keyword-search] stmt 1 time: 292 ms
+ count 
+-------
+  2556
+(1 row)
+
+total time: 265  ms
+[openGauss keyword-search] stmt 2 time: 279 ms
+
+
+################# 关键字搜索实验已完成 #################
+详细结果已保存在 keyword_search_results.log 文件中。
+现在您可以根据此文件的输出，计算三次运行的平均值来填充报告中的 [TBD] 部分。
