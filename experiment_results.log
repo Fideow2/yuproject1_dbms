@@ -1,0 +1,1638 @@
+--- 准备阶段：将SQL文件复制到容器 ---
+SQL 文件已成功复制到所有容器。
+
+
+################# 开始第 1 / 3轮 JOIN 测试 #################
+
+--- [测试 1.1] PostgreSQL：JOIN 查询 (无索引) ---
+  > 重启容器以清空缓存并移除索引...
+  > 执行无索引 JOIN 查询...
+Timing is on.
+SET
+Time: 0.282 ms
+ count 
+-------
+    64
+(1 row)
+
+Time: 1293.276 ms (00:01.293)
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 939.001 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 913.370 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 434.829 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 346.177 ms
+Time: 60020.933 ms (01:00.021)
+  count   
+----------
+ 13342831
+(1 row)
+
+Time: 2501.291 ms (00:02.501)
+ year | number_of_movies 
+------+------------------
+ 1894 |                1
+ 1896 |                1
+ 1897 |                2
+ 1898 |                6
+ 1899 |                8
+(5 rows)
+
+Time: 1.215 ms
+ year | number_of_movies 
+------+------------------
+ 1905 |               17
+ 1906 |               22
+ 1907 |               17
+ 1908 |               20
+ 1909 |               84
+(5 rows)
+
+Time: 0.505 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 504.999 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 498.699 ms
+ count 
+-------
+ 67542
+(1 row)
+
+Time: 21.555 ms
+ count 
+-------
+ 11546
+(1 row)
+
+Time: 33.283 ms
+ count 
+-------
+     3
+(1 row)
+
+Time: 0.485 ms
+ count 
+-------
+   609
+(1 row)
+
+Time: 89.162 ms
+ count 
+-------
+     0
+(1 row)
+
+Time: 886.744 ms
+  count   
+----------
+ 14781051
+(1 row)
+
+Time: 942.885 ms
+ year | cnt | percentage 
+------+-----+------------
+ 1894 |   1 |       0.00
+ 1896 |   1 |       0.00
+ 1897 |   2 |       0.00
+ 1898 |   6 |       0.00
+ 1899 |   8 |       0.00
+(5 rows)
+
+Time: 45.662 ms
+                       title                       | year | rn 
+---------------------------------------------------+------+----
+ Miss Jerry                                        | 1894 |  1
+ Birmingham                                        | 1896 |  1
+ Reproduction of the Corbett and Fitzsimmons Fight | 1897 |  1
+ The Corbett-Fitzsimmons Fight                     | 1897 |  2
+ 69th Regiment Passing in Review                   | 1898 |  1
+(5 rows)
+
+Time: 32.800 ms
+ person_id 
+-----------
+ nm0000001
+ nm0000004
+ nm0000005
+ nm0000007
+ nm0000008
+(5 rows)
+
+Time: 6483.875 ms (00:06.484)
+ person_id 
+-----------
+ nm1251481
+ nm0203750
+ nm0048448
+ nm1252173
+ nm1253418
+(5 rows)
+
+Time: 0.255 ms
+ title_bucket 
+--------------
+ Other
+ A-M
+ N-Z
+(3 rows)
+
+Time: 35.619 ms
+  count  
+---------
+ 1438954
+(1 row)
+
+Time: 10698.398 ms (00:10.698)
+             title             | year | era 
+-------------------------------+------+-----
+ Miss Jerry                    | 1894 | old
+ The Corbett-Fitzsimmons Fight | 1897 | old
+ Bohemios                      | 1905 | old
+ The Story of the Kelly Gang   | 1906 | old
+ The Prodigal Son              | 1907 | old
+(5 rows)
+
+Time: 1.573 ms
+        title         | year 
+----------------------+------
+ Flipside             | 2032
+ The Edwin Show: Home | 2031
+ Avatar 5             | 2031
+ The End of Us        | 2030
+ Orion                | 2030
+(5 rows)
+
+Time: 0.400 ms
+              title              | year 
+---------------------------------+------
+ Flipside                        | 2032
+ Avatar 5                        | 2031
+ The Edwin Show: Home            | 2031
+ A Journey Through Broken Dreams | 2030
+ Orion                           | 2030
+(5 rows)
+
+Time: 0.311 ms
+ decade | number_of_movies 
+--------+------------------
+   2000 |            78599
+   1960 |            31876
+   2020 |           116165
+   1940 |            14748
+   2030 |                7
+(5 rows)
+
+Time: 252.661 ms
+ initial | first_year 
+---------+------------
+ #       |       1898
+ A       |       1898
+ Á       |       1915
+ À       |       1922
+ Â       |       1918
+(5 rows)
+
+Time: 241.337 ms
+                   title                    | decade | year | rn 
+--------------------------------------------+--------+------+----
+ 2nd Company Governor's Footguards, Conn.   |   1890 | 1899 |  1
+ A Football Tackle                          |   1890 | 1899 |  2
+ A Procissão da Semana Santa                |   1890 | 1899 |  3
+ Jeffries-Sharkey Contest                   |   1890 | 1899 |  4
+ O Cortejo da Procissão da Senhora da Saúde |   1890 | 1899 |  5
+(5 rows)
+
+Time: 372.421 ms
+
+--- [测试 1.2] openGauss：JOIN 查询 (无索引) ---
+  > 重启容器以清空缓存并移除索引...
+  > 执行无索引 JOIN 查询...
+[openGauss no-index] stmt 1 time: 13 ms
+[openGauss no-index] stmt 2 time: 2451 ms
+[openGauss no-index] stmt 3 time: 1969 ms
+[openGauss no-index] stmt 4 time: 2374 ms
+[openGauss no-index] stmt 5 time: 1800 ms
+[openGauss no-index] stmt 6 time: 1684 ms
+[openGauss no-index] stmt 7 time: 9544 ms
+[openGauss no-index] stmt 8 time: 10127 ms
+[openGauss no-index] stmt 9 time: 23 ms
+[openGauss no-index] stmt 10 time: 23 ms
+[openGauss no-index] stmt 11 time: 1397 ms
+[openGauss no-index] stmt 12 time: 1416 ms
+[openGauss no-index] stmt 13 time: 56 ms
+[openGauss no-index] stmt 14 time: 106 ms
+[openGauss no-index] stmt 15 time: 16 ms
+[openGauss no-index] stmt 16 time: 370 ms
+[openGauss no-index] stmt 17 time: 1692 ms
+[openGauss no-index] stmt 18 time: 2280 ms
+[openGauss no-index] stmt 19 time: 318 ms
+[openGauss no-index] stmt 20 time: 1468 ms
+[openGauss no-index] stmt 21 time: 2332 ms
+[openGauss no-index] stmt 22 time: 15 ms
+[openGauss no-index] stmt 23 time: 31 ms
+[openGauss no-index] stmt 24 time: 12403 ms
+[openGauss no-index] stmt 25 time: 13 ms
+[openGauss no-index] stmt 26 time: 14 ms
+[openGauss no-index] stmt 27 time: 131 ms
+[openGauss no-index] stmt 28 time: 515 ms
+[openGauss no-index] stmt 29 time: 1036 ms
+[openGauss no-index] stmt 30 time: 1817 ms
+
+--- [测试 2.1] PostgreSQL：JOIN 查询 (有索引) ---
+  > 重启容器以清空缓存...
+  > 正在创建索引...
+Timing is on.
+CREATE INDEX
+Time: 30563.114 ms (00:30.563)
+CREATE INDEX
+Time: 7258.259 ms (00:07.258)
+CREATE INDEX
+Time: 1666.548 ms (00:01.667)
+CREATE INDEX
+Time: 0.441 ms
+CREATE INDEX
+Time: 0.089 ms
+  > 索引创建完毕，执行有索引 JOIN 查询...
+Timing is on.
+SET
+Time: 0.126 ms
+ count 
+-------
+    64
+(1 row)
+
+Time: 14.544 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 994.547 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 969.697 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 469.434 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 355.258 ms
+Time: 60022.627 ms (01:00.023)
+  count   
+----------
+ 13342831
+(1 row)
+
+Time: 3086.819 ms (00:03.087)
+ year | number_of_movies 
+------+------------------
+ 1894 |                1
+ 1896 |                1
+ 1897 |                2
+ 1898 |                6
+ 1899 |                8
+(5 rows)
+
+Time: 1.146 ms
+ year | number_of_movies 
+------+------------------
+ 1905 |               17
+ 1906 |               22
+ 1907 |               17
+ 1908 |               20
+ 1909 |               84
+(5 rows)
+
+Time: 0.522 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 507.837 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 494.047 ms
+ count 
+-------
+ 67542
+(1 row)
+
+Time: 11.773 ms
+ count 
+-------
+ 11546
+(1 row)
+
+Time: 33.166 ms
+ count 
+-------
+     3
+(1 row)
+
+Time: 0.517 ms
+ count 
+-------
+   609
+(1 row)
+
+Time: 81.871 ms
+ count 
+-------
+     0
+(1 row)
+
+Time: 0.466 ms
+  count   
+----------
+ 14781051
+(1 row)
+
+Time: 990.581 ms
+ year | cnt | percentage 
+------+-----+------------
+ 1894 |   1 |       0.00
+ 1896 |   1 |       0.00
+ 1897 |   2 |       0.00
+ 1898 |   6 |       0.00
+ 1899 |   8 |       0.00
+(5 rows)
+
+Time: 47.330 ms
+                       title                       | year | rn 
+---------------------------------------------------+------+----
+ Miss Jerry                                        | 1894 |  1
+ Birmingham                                        | 1896 |  1
+ Reproduction of the Corbett and Fitzsimmons Fight | 1897 |  1
+ The Corbett-Fitzsimmons Fight                     | 1897 |  2
+ 69th Regiment Passing in Review                   | 1898 |  1
+(5 rows)
+
+Time: 23.465 ms
+ person_id 
+-----------
+ nm0000001
+ nm0000004
+ nm0000005
+ nm0000007
+ nm0000008
+(5 rows)
+
+Time: 6537.757 ms (00:06.538)
+ person_id 
+-----------
+ nm0635157
+ nm0493382
+ nm0001505
+ nm0000513
+ nm0345466
+(5 rows)
+
+Time: 0.216 ms
+ title_bucket 
+--------------
+ Other
+ A-M
+ N-Z
+(3 rows)
+
+Time: 21.125 ms
+  count  
+---------
+ 1438954
+(1 row)
+
+Time: 10638.421 ms (00:10.638)
+             title             | year | era 
+-------------------------------+------+-----
+ Miss Jerry                    | 1894 | old
+ The Corbett-Fitzsimmons Fight | 1897 | old
+ Bohemios                      | 1905 | old
+ The Story of the Kelly Gang   | 1906 | old
+ The Prodigal Son              | 1907 | old
+(5 rows)
+
+Time: 1.602 ms
+        title         | year 
+----------------------+------
+ Flipside             | 2032
+ The Edwin Show: Home | 2031
+ Avatar 5             | 2031
+ The End of Us        | 2030
+ Orion                | 2030
+(5 rows)
+
+Time: 0.195 ms
+              title              | year 
+---------------------------------+------
+ Flipside                        | 2032
+ Avatar 5                        | 2031
+ The Edwin Show: Home            | 2031
+ A Journey Through Broken Dreams | 2030
+ Orion                           | 2030
+(5 rows)
+
+Time: 0.222 ms
+ decade | number_of_movies 
+--------+------------------
+   2000 |            78599
+   1960 |            31876
+   2020 |           116165
+   1940 |            14748
+   2030 |                7
+(5 rows)
+
+Time: 231.927 ms
+ initial | first_year 
+---------+------------
+ #       |       1898
+ A       |       1898
+ Á       |       1915
+ À       |       1922
+ Â       |       1918
+(5 rows)
+
+Time: 240.697 ms
+                   title                    | decade | year | rn 
+--------------------------------------------+--------+------+----
+ 2nd Company Governor's Footguards, Conn.   |   1890 | 1899 |  1
+ A Football Tackle                          |   1890 | 1899 |  2
+ A Procissão da Semana Santa                |   1890 | 1899 |  3
+ Jeffries-Sharkey Contest                   |   1890 | 1899 |  4
+ O Cortejo da Procissão da Senhora da Saúde |   1890 | 1899 |  5
+(5 rows)
+
+Time: 379.082 ms
+
+--- [测试 2.2] openGauss：JOIN 查询 (有索引) ---
+  > 重启容器以清空缓存...
+  > 正在创建索引...
+[openGauss create-index] stmt 1 time: 60342 ms
+[openGauss create-index] stmt 2 time: 14292 ms
+[openGauss create-index] stmt 3 time: 3340 ms
+[openGauss create-index] stmt 4 time: 15 ms
+[openGauss create-index] stmt 5 time: 15 ms
+  > 索引创建完毕，执行有索引 JOIN 查询...
+[openGauss with-index] stmt 1 time: 15 ms
+[openGauss with-index] stmt 2 time: 36 ms
+[openGauss with-index] stmt 3 time: 2442 ms
+[openGauss with-index] stmt 4 time: 2422 ms
+[openGauss with-index] stmt 5 time: 1699 ms
+[openGauss with-index] stmt 6 time: 1606 ms
+[openGauss with-index] stmt 7 time: 9101 ms
+[openGauss with-index] stmt 8 time: 8970 ms
+[openGauss with-index] stmt 9 time: 22 ms
+[openGauss with-index] stmt 10 time: 27 ms
+[openGauss with-index] stmt 11 time: 1463 ms
+[openGauss with-index] stmt 12 time: 1411 ms
+[openGauss with-index] stmt 13 time: 48 ms
+[openGauss with-index] stmt 14 time: 107 ms
+[openGauss with-index] stmt 15 time: 15 ms
+[openGauss with-index] stmt 16 time: 302 ms
+[openGauss with-index] stmt 17 time: 17 ms
+[openGauss with-index] stmt 18 time: 2151 ms
+[openGauss with-index] stmt 19 time: 299 ms
+[openGauss with-index] stmt 20 time: 1443 ms
+[openGauss with-index] stmt 21 time: 2274 ms
+[openGauss with-index] stmt 22 time: 16 ms
+[openGauss with-index] stmt 23 time: 29 ms
+[openGauss with-index] stmt 24 time: 12823 ms
+[openGauss with-index] stmt 25 time: 14 ms
+[openGauss with-index] stmt 26 time: 16 ms
+[openGauss with-index] stmt 27 time: 131 ms
+[openGauss with-index] stmt 28 time: 505 ms
+[openGauss with-index] stmt 29 time: 979 ms
+[openGauss with-index] stmt 30 time: 1992 ms
+
+--- [文件I/O对比说明] ---
+  > 对于关系型JOIN操作，简单的文件I/O没有直接、高效的对应方法。
+
+
+################# 开始第 2 / 3轮 JOIN 测试 #################
+
+--- [测试 1.1] PostgreSQL：JOIN 查询 (无索引) ---
+  > 重启容器以清空缓存并移除索引...
+  > 执行无索引 JOIN 查询...
+Timing is on.
+SET
+Time: 0.092 ms
+ count 
+-------
+    64
+(1 row)
+
+Time: 1281.884 ms (00:01.282)
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 931.079 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 928.570 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 483.962 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 354.002 ms
+Time: 60022.189 ms (01:00.022)
+  count   
+----------
+ 13342831
+(1 row)
+
+Time: 3155.127 ms (00:03.155)
+ year | number_of_movies 
+------+------------------
+ 1894 |                1
+ 1896 |                1
+ 1897 |                2
+ 1898 |                6
+ 1899 |                8
+(5 rows)
+
+Time: 1.450 ms
+ year | number_of_movies 
+------+------------------
+ 1905 |               17
+ 1906 |               22
+ 1907 |               17
+ 1908 |               20
+ 1909 |               84
+(5 rows)
+
+Time: 0.655 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 583.061 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 494.523 ms
+ count 
+-------
+ 67542
+(1 row)
+
+Time: 33.006 ms
+ count 
+-------
+ 11546
+(1 row)
+
+Time: 47.271 ms
+ count 
+-------
+     3
+(1 row)
+
+Time: 0.475 ms
+ count 
+-------
+   609
+(1 row)
+
+Time: 85.914 ms
+ count 
+-------
+     0
+(1 row)
+
+Time: 958.982 ms
+  count   
+----------
+ 14781051
+(1 row)
+
+Time: 1013.557 ms (00:01.014)
+ year | cnt | percentage 
+------+-----+------------
+ 1894 |   1 |       0.00
+ 1896 |   1 |       0.00
+ 1897 |   2 |       0.00
+ 1898 |   6 |       0.00
+ 1899 |   8 |       0.00
+(5 rows)
+
+Time: 59.099 ms
+                       title                       | year | rn 
+---------------------------------------------------+------+----
+ Miss Jerry                                        | 1894 |  1
+ Birmingham                                        | 1896 |  1
+ Reproduction of the Corbett and Fitzsimmons Fight | 1897 |  1
+ The Corbett-Fitzsimmons Fight                     | 1897 |  2
+ 69th Regiment Passing in Review                   | 1898 |  1
+(5 rows)
+
+Time: 24.067 ms
+ person_id 
+-----------
+ nm0000001
+ nm0000004
+ nm0000005
+ nm0000007
+ nm0000008
+(5 rows)
+
+Time: 6607.233 ms (00:06.607)
+ person_id 
+-----------
+ nm0652116
+ nm0418788
+ nm2421781
+ nm1467284
+ nm7968984
+(5 rows)
+
+Time: 0.488 ms
+ title_bucket 
+--------------
+ Other
+ A-M
+ N-Z
+(3 rows)
+
+Time: 15.356 ms
+  count  
+---------
+ 1438954
+(1 row)
+
+Time: 10721.334 ms (00:10.721)
+             title             | year | era 
+-------------------------------+------+-----
+ Miss Jerry                    | 1894 | old
+ The Corbett-Fitzsimmons Fight | 1897 | old
+ Bohemios                      | 1905 | old
+ The Story of the Kelly Gang   | 1906 | old
+ The Prodigal Son              | 1907 | old
+(5 rows)
+
+Time: 7.427 ms
+        title         | year 
+----------------------+------
+ Flipside             | 2032
+ The Edwin Show: Home | 2031
+ Avatar 5             | 2031
+ The End of Us        | 2030
+ Orion                | 2030
+(5 rows)
+
+Time: 0.188 ms
+              title              | year 
+---------------------------------+------
+ Flipside                        | 2032
+ Avatar 5                        | 2031
+ The Edwin Show: Home            | 2031
+ A Journey Through Broken Dreams | 2030
+ Orion                           | 2030
+(5 rows)
+
+Time: 0.188 ms
+ decade | number_of_movies 
+--------+------------------
+   2000 |            78599
+   1960 |            31876
+   2020 |           116165
+   1940 |            14748
+   2030 |                7
+(5 rows)
+
+Time: 227.144 ms
+ initial | first_year 
+---------+------------
+ #       |       1898
+ A       |       1898
+ Á       |       1915
+ À       |       1922
+ Â       |       1918
+(5 rows)
+
+Time: 232.544 ms
+                   title                    | decade | year | rn 
+--------------------------------------------+--------+------+----
+ 2nd Company Governor's Footguards, Conn.   |   1890 | 1899 |  1
+ A Football Tackle                          |   1890 | 1899 |  2
+ A Procissão da Semana Santa                |   1890 | 1899 |  3
+ Jeffries-Sharkey Contest                   |   1890 | 1899 |  4
+ O Cortejo da Procissão da Senhora da Saúde |   1890 | 1899 |  5
+(5 rows)
+
+Time: 380.936 ms
+
+--- [测试 1.2] openGauss：JOIN 查询 (无索引) ---
+  > 重启容器以清空缓存并移除索引...
+  > 执行无索引 JOIN 查询...
+[openGauss no-index] stmt 1 time: 13 ms
+[openGauss no-index] stmt 2 time: 2509 ms
+[openGauss no-index] stmt 3 time: 2013 ms
+[openGauss no-index] stmt 4 time: 2139 ms
+[openGauss no-index] stmt 5 time: 1790 ms
+[openGauss no-index] stmt 6 time: 1673 ms
+[openGauss no-index] stmt 7 time: 9046 ms
+[openGauss no-index] stmt 8 time: 8691 ms
+[openGauss no-index] stmt 9 time: 15 ms
+[openGauss no-index] stmt 10 time: 15 ms
+[openGauss no-index] stmt 11 time: 1455 ms
+[openGauss no-index] stmt 12 time: 1391 ms
+[openGauss no-index] stmt 13 time: 50 ms
+[openGauss no-index] stmt 14 time: 107 ms
+[openGauss no-index] stmt 15 time: 15 ms
+[openGauss no-index] stmt 16 time: 301 ms
+[openGauss no-index] stmt 17 time: 1612 ms
+[openGauss no-index] stmt 18 time: 2067 ms
+[openGauss no-index] stmt 19 time: 313 ms
+[openGauss no-index] stmt 20 time: 1444 ms
+[openGauss no-index] stmt 21 time: 2415 ms
+[openGauss no-index] stmt 22 time: 15 ms
+[openGauss no-index] stmt 23 time: 33 ms
+[openGauss no-index] stmt 24 time: 12662 ms
+[openGauss no-index] stmt 25 time: 14 ms
+[openGauss no-index] stmt 26 time: 14 ms
+[openGauss no-index] stmt 27 time: 127 ms
+[openGauss no-index] stmt 28 time: 507 ms
+[openGauss no-index] stmt 29 time: 1065 ms
+[openGauss no-index] stmt 30 time: 1816 ms
+
+--- [测试 2.1] PostgreSQL：JOIN 查询 (有索引) ---
+  > 重启容器以清空缓存...
+  > 正在创建索引...
+Timing is on.
+CREATE INDEX
+Time: 30908.739 ms (00:30.909)
+CREATE INDEX
+Time: 7055.432 ms (00:07.055)
+CREATE INDEX
+Time: 1657.047 ms (00:01.657)
+CREATE INDEX
+Time: 1.070 ms
+CREATE INDEX
+Time: 0.119 ms
+  > 索引创建完毕，执行有索引 JOIN 查询...
+Timing is on.
+SET
+Time: 0.112 ms
+ count 
+-------
+    64
+(1 row)
+
+Time: 18.567 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 1079.028 ms (00:01.079)
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 1062.181 ms (00:01.062)
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 462.659 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 356.918 ms
+Time: 60022.470 ms (01:00.022)
+  count   
+----------
+ 13342831
+(1 row)
+
+Time: 3059.269 ms (00:03.059)
+ year | number_of_movies 
+------+------------------
+ 1894 |                1
+ 1896 |                1
+ 1897 |                2
+ 1898 |                6
+ 1899 |                8
+(5 rows)
+
+Time: 1.213 ms
+ year | number_of_movies 
+------+------------------
+ 1905 |               17
+ 1906 |               22
+ 1907 |               17
+ 1908 |               20
+ 1909 |               84
+(5 rows)
+
+Time: 0.470 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 583.371 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 506.291 ms
+ count 
+-------
+ 67542
+(1 row)
+
+Time: 21.515 ms
+ count 
+-------
+ 11546
+(1 row)
+
+Time: 34.059 ms
+ count 
+-------
+     3
+(1 row)
+
+Time: 0.508 ms
+ count 
+-------
+   609
+(1 row)
+
+Time: 94.988 ms
+ count 
+-------
+     0
+(1 row)
+
+Time: 0.430 ms
+  count   
+----------
+ 14781051
+(1 row)
+
+Time: 1061.961 ms (00:01.062)
+ year | cnt | percentage 
+------+-----+------------
+ 1894 |   1 |       0.00
+ 1896 |   1 |       0.00
+ 1897 |   2 |       0.00
+ 1898 |   6 |       0.00
+ 1899 |   8 |       0.00
+(5 rows)
+
+Time: 46.740 ms
+                       title                       | year | rn 
+---------------------------------------------------+------+----
+ Miss Jerry                                        | 1894 |  1
+ Birmingham                                        | 1896 |  1
+ Reproduction of the Corbett and Fitzsimmons Fight | 1897 |  1
+ The Corbett-Fitzsimmons Fight                     | 1897 |  2
+ 69th Regiment Passing in Review                   | 1898 |  1
+(5 rows)
+
+Time: 23.937 ms
+ person_id 
+-----------
+ nm0000001
+ nm0000004
+ nm0000005
+ nm0000007
+ nm0000008
+(5 rows)
+
+Time: 6612.844 ms (00:06.613)
+ person_id 
+-----------
+ nm0478628
+ nm0571186
+ nm0576055
+ nm0924307
+ nm7718721
+(5 rows)
+
+Time: 0.240 ms
+ title_bucket 
+--------------
+ Other
+ A-M
+ N-Z
+(3 rows)
+
+Time: 14.165 ms
+  count  
+---------
+ 1438954
+(1 row)
+
+Time: 10681.845 ms (00:10.682)
+             title             | year | era 
+-------------------------------+------+-----
+ Miss Jerry                    | 1894 | old
+ The Corbett-Fitzsimmons Fight | 1897 | old
+ Bohemios                      | 1905 | old
+ The Story of the Kelly Gang   | 1906 | old
+ The Prodigal Son              | 1907 | old
+(5 rows)
+
+Time: 7.565 ms
+        title         | year 
+----------------------+------
+ Flipside             | 2032
+ The Edwin Show: Home | 2031
+ Avatar 5             | 2031
+ The End of Us        | 2030
+ Orion                | 2030
+(5 rows)
+
+Time: 0.152 ms
+              title              | year 
+---------------------------------+------
+ Flipside                        | 2032
+ Avatar 5                        | 2031
+ The Edwin Show: Home            | 2031
+ A Journey Through Broken Dreams | 2030
+ Orion                           | 2030
+(5 rows)
+
+Time: 0.203 ms
+ decade | number_of_movies 
+--------+------------------
+   2000 |            78599
+   1960 |            31876
+   2020 |           116165
+   1940 |            14748
+   2030 |                7
+(5 rows)
+
+Time: 230.576 ms
+ initial | first_year 
+---------+------------
+ #       |       1898
+ A       |       1898
+ Á       |       1915
+ À       |       1922
+ Â       |       1918
+(5 rows)
+
+Time: 234.507 ms
+                   title                    | decade | year | rn 
+--------------------------------------------+--------+------+----
+ 2nd Company Governor's Footguards, Conn.   |   1890 | 1899 |  1
+ A Football Tackle                          |   1890 | 1899 |  2
+ A Procissão da Semana Santa                |   1890 | 1899 |  3
+ Jeffries-Sharkey Contest                   |   1890 | 1899 |  4
+ O Cortejo da Procissão da Senhora da Saúde |   1890 | 1899 |  5
+(5 rows)
+
+Time: 378.797 ms
+
+--- [测试 2.2] openGauss：JOIN 查询 (有索引) ---
+  > 重启容器以清空缓存...
+  > 正在创建索引...
+[openGauss create-index] stmt 1 time: 60514 ms
+[openGauss create-index] stmt 2 time: 14273 ms
+[openGauss create-index] stmt 3 time: 3215 ms
+[openGauss create-index] stmt 4 time: 16 ms
+[openGauss create-index] stmt 5 time: 15 ms
+  > 索引创建完毕，执行有索引 JOIN 查询...
+[openGauss with-index] stmt 1 time: 15 ms
+[openGauss with-index] stmt 2 time: 36 ms
+[openGauss with-index] stmt 3 time: 2465 ms
+[openGauss with-index] stmt 4 time: 2124 ms
+[openGauss with-index] stmt 5 time: 1803 ms
+[openGauss with-index] stmt 6 time: 1673 ms
+[openGauss with-index] stmt 7 time: 9951 ms
+[openGauss with-index] stmt 8 time: 9527 ms
+[openGauss with-index] stmt 9 time: 18 ms
+[openGauss with-index] stmt 10 time: 26 ms
+[openGauss with-index] stmt 11 time: 1508 ms
+[openGauss with-index] stmt 12 time: 1442 ms
+[openGauss with-index] stmt 13 time: 47 ms
+[openGauss with-index] stmt 14 time: 107 ms
+[openGauss with-index] stmt 15 time: 15 ms
+[openGauss with-index] stmt 16 time: 301 ms
+[openGauss with-index] stmt 17 time: 16 ms
+[openGauss with-index] stmt 18 time: 2172 ms
+[openGauss with-index] stmt 19 time: 306 ms
+[openGauss with-index] stmt 20 time: 1426 ms
+[openGauss with-index] stmt 21 time: 2411 ms
+[openGauss with-index] stmt 22 time: 16 ms
+[openGauss with-index] stmt 23 time: 30 ms
+[openGauss with-index] stmt 24 time: 12706 ms
+[openGauss with-index] stmt 25 time: 14 ms
+[openGauss with-index] stmt 26 time: 14 ms
+[openGauss with-index] stmt 27 time: 130 ms
+[openGauss with-index] stmt 28 time: 520 ms
+[openGauss with-index] stmt 29 time: 1075 ms
+[openGauss with-index] stmt 30 time: 1847 ms
+
+--- [文件I/O对比说明] ---
+  > 对于关系型JOIN操作，简单的文件I/O没有直接、高效的对应方法。
+
+
+################# 开始第 3 / 3轮 JOIN 测试 #################
+
+--- [测试 1.1] PostgreSQL：JOIN 查询 (无索引) ---
+  > 重启容器以清空缓存并移除索引...
+  > 执行无索引 JOIN 查询...
+Timing is on.
+SET
+Time: 0.321 ms
+ count 
+-------
+    64
+(1 row)
+
+Time: 1305.225 ms (00:01.305)
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 999.401 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 985.864 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 440.177 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 350.711 ms
+Time: 60022.437 ms (01:00.022)
+  count   
+----------
+ 13342831
+(1 row)
+
+Time: 2673.672 ms (00:02.674)
+ year | number_of_movies 
+------+------------------
+ 1894 |                1
+ 1896 |                1
+ 1897 |                2
+ 1898 |                6
+ 1899 |                8
+(5 rows)
+
+Time: 1.190 ms
+ year | number_of_movies 
+------+------------------
+ 1905 |               17
+ 1906 |               22
+ 1907 |               17
+ 1908 |               20
+ 1909 |               84
+(5 rows)
+
+Time: 0.418 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 519.153 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 496.214 ms
+ count 
+-------
+ 67542
+(1 row)
+
+Time: 12.232 ms
+ count 
+-------
+ 11546
+(1 row)
+
+Time: 33.292 ms
+ count 
+-------
+     3
+(1 row)
+
+Time: 0.577 ms
+ count 
+-------
+   609
+(1 row)
+
+Time: 81.689 ms
+ count 
+-------
+     0
+(1 row)
+
+Time: 956.446 ms
+  count   
+----------
+ 14781051
+(1 row)
+
+Time: 987.718 ms
+ year | cnt | percentage 
+------+-----+------------
+ 1894 |   1 |       0.00
+ 1896 |   1 |       0.00
+ 1897 |   2 |       0.00
+ 1898 |   6 |       0.00
+ 1899 |   8 |       0.00
+(5 rows)
+
+Time: 46.512 ms
+                       title                       | year | rn 
+---------------------------------------------------+------+----
+ Miss Jerry                                        | 1894 |  1
+ Birmingham                                        | 1896 |  1
+ Reproduction of the Corbett and Fitzsimmons Fight | 1897 |  1
+ The Corbett-Fitzsimmons Fight                     | 1897 |  2
+ 69th Regiment Passing in Review                   | 1898 |  1
+(5 rows)
+
+Time: 23.113 ms
+ person_id 
+-----------
+ nm0000001
+ nm0000004
+ nm0000005
+ nm0000007
+ nm0000008
+(5 rows)
+
+Time: 6544.871 ms (00:06.545)
+ person_id 
+-----------
+ nm2531070
+ nm9035869
+ nm1839955
+ nm0134642
+ nm0598857
+(5 rows)
+
+Time: 0.221 ms
+ title_bucket 
+--------------
+ Other
+ A-M
+ N-Z
+(3 rows)
+
+Time: 14.616 ms
+  count  
+---------
+ 1438954
+(1 row)
+
+Time: 10678.258 ms (00:10.678)
+             title             | year | era 
+-------------------------------+------+-----
+ Miss Jerry                    | 1894 | old
+ The Corbett-Fitzsimmons Fight | 1897 | old
+ Bohemios                      | 1905 | old
+ The Story of the Kelly Gang   | 1906 | old
+ The Prodigal Son              | 1907 | old
+(5 rows)
+
+Time: 7.471 ms
+        title         | year 
+----------------------+------
+ Flipside             | 2032
+ The Edwin Show: Home | 2031
+ Avatar 5             | 2031
+ The End of Us        | 2030
+ Orion                | 2030
+(5 rows)
+
+Time: 0.171 ms
+              title              | year 
+---------------------------------+------
+ Flipside                        | 2032
+ Avatar 5                        | 2031
+ The Edwin Show: Home            | 2031
+ A Journey Through Broken Dreams | 2030
+ Orion                           | 2030
+(5 rows)
+
+Time: 0.168 ms
+ decade | number_of_movies 
+--------+------------------
+   2000 |            78599
+   1960 |            31876
+   2020 |           116165
+   1940 |            14748
+   2030 |                7
+(5 rows)
+
+Time: 227.797 ms
+ initial | first_year 
+---------+------------
+ #       |       1898
+ A       |       1898
+ Á       |       1915
+ À       |       1922
+ Â       |       1918
+(5 rows)
+
+Time: 230.841 ms
+                   title                    | decade | year | rn 
+--------------------------------------------+--------+------+----
+ 2nd Company Governor's Footguards, Conn.   |   1890 | 1899 |  1
+ A Football Tackle                          |   1890 | 1899 |  2
+ A Procissão da Semana Santa                |   1890 | 1899 |  3
+ Jeffries-Sharkey Contest                   |   1890 | 1899 |  4
+ O Cortejo da Procissão da Senhora da Saúde |   1890 | 1899 |  5
+(5 rows)
+
+Time: 371.271 ms
+
+--- [测试 1.2] openGauss：JOIN 查询 (无索引) ---
+  > 重启容器以清空缓存并移除索引...
+  > 执行无索引 JOIN 查询...
+[openGauss no-index] stmt 1 time: 13 ms
+[openGauss no-index] stmt 2 time: 2525 ms
+[openGauss no-index] stmt 3 time: 1996 ms
+[openGauss no-index] stmt 4 time: 2145 ms
+[openGauss no-index] stmt 5 time: 1721 ms
+[openGauss no-index] stmt 6 time: 1629 ms
+[openGauss no-index] stmt 7 time: 9247 ms
+[openGauss no-index] stmt 8 time: 8500 ms
+[openGauss no-index] stmt 9 time: 16 ms
+[openGauss no-index] stmt 10 time: 15 ms
+[openGauss no-index] stmt 11 time: 1380 ms
+[openGauss no-index] stmt 12 time: 1378 ms
+[openGauss no-index] stmt 13 time: 49 ms
+[openGauss no-index] stmt 14 time: 107 ms
+[openGauss no-index] stmt 15 time: 15 ms
+[openGauss no-index] stmt 16 time: 302 ms
+[openGauss no-index] stmt 17 time: 1561 ms
+[openGauss no-index] stmt 18 time: 1956 ms
+[openGauss no-index] stmt 19 time: 301 ms
+[openGauss no-index] stmt 20 time: 1437 ms
+[openGauss no-index] stmt 21 time: 2229 ms
+[openGauss no-index] stmt 22 time: 15 ms
+[openGauss no-index] stmt 23 time: 31 ms
+[openGauss no-index] stmt 24 time: 12561 ms
+[openGauss no-index] stmt 25 time: 13 ms
+[openGauss no-index] stmt 26 time: 14 ms
+[openGauss no-index] stmt 27 time: 125 ms
+[openGauss no-index] stmt 28 time: 508 ms
+[openGauss no-index] stmt 29 time: 915 ms
+[openGauss no-index] stmt 30 time: 1821 ms
+
+--- [测试 2.1] PostgreSQL：JOIN 查询 (有索引) ---
+  > 重启容器以清空缓存...
+  > 正在创建索引...
+Timing is on.
+CREATE INDEX
+Time: 30216.245 ms (00:30.216)
+CREATE INDEX
+Time: 7151.399 ms (00:07.151)
+CREATE INDEX
+Time: 1574.525 ms (00:01.575)
+CREATE INDEX
+Time: 0.748 ms
+CREATE INDEX
+Time: 0.136 ms
+  > 索引创建完毕，执行有索引 JOIN 查询...
+Timing is on.
+SET
+Time: 0.103 ms
+ count 
+-------
+    64
+(1 row)
+
+Time: 15.205 ms
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 1127.740 ms (00:01.128)
+ count 
+-------
+ 72088
+(1 row)
+
+Time: 1079.234 ms (00:01.079)
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 468.921 ms
+ count  
+--------
+ 474384
+(1 row)
+
+Time: 362.984 ms
+Time: 60022.432 ms (01:00.022)
+  count   
+----------
+ 13342831
+(1 row)
+
+Time: 3100.388 ms (00:03.100)
+ year | number_of_movies 
+------+------------------
+ 1894 |                1
+ 1896 |                1
+ 1897 |                2
+ 1898 |                6
+ 1899 |                8
+(5 rows)
+
+Time: 1.075 ms
+ year | number_of_movies 
+------+------------------
+ 1905 |               17
+ 1906 |               22
+ 1907 |               17
+ 1908 |               20
+ 1909 |               84
+(5 rows)
+
+Time: 0.412 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 507.726 ms
+  count  
+---------
+ 4407469
+(1 row)
+
+Time: 503.042 ms
+ count 
+-------
+ 67542
+(1 row)
+
+Time: 21.035 ms
+ count 
+-------
+ 11546
+(1 row)
+
+Time: 33.160 ms
+ count 
+-------
+     3
+(1 row)
+
+Time: 0.520 ms
+ count 
+-------
+   609
+(1 row)
+
+Time: 85.501 ms
+ count 
+-------
+     0
+(1 row)
+
+Time: 0.457 ms
+  count   
+----------
+ 14781051
+(1 row)
+
+Time: 1029.627 ms (00:01.030)
+ year | cnt | percentage 
+------+-----+------------
+ 1894 |   1 |       0.00
+ 1896 |   1 |       0.00
+ 1897 |   2 |       0.00
+ 1898 |   6 |       0.00
+ 1899 |   8 |       0.00
+(5 rows)
+
+Time: 49.752 ms
+                       title                       | year | rn 
+---------------------------------------------------+------+----
+ Miss Jerry                                        | 1894 |  1
+ Birmingham                                        | 1896 |  1
+ Reproduction of the Corbett and Fitzsimmons Fight | 1897 |  1
+ The Corbett-Fitzsimmons Fight                     | 1897 |  2
+ 69th Regiment Passing in Review                   | 1898 |  1
+(5 rows)
+
+Time: 26.190 ms
+ person_id 
+-----------
+ nm0000001
+ nm0000004
+ nm0000005
+ nm0000007
+ nm0000008
+(5 rows)
+
+Time: 6509.411 ms (00:06.509)
+ person_id 
+-----------
+ nm0749608
+ nm9117405
+ nm0708514
+ nm0530166
+ nm0649598
+(5 rows)
+
+Time: 0.248 ms
+ title_bucket 
+--------------
+ Other
+ A-M
+ N-Z
+(3 rows)
+
+Time: 27.281 ms
+  count  
+---------
+ 1438954
+(1 row)
+
+Time: 10675.543 ms (00:10.676)
+             title             | year | era 
+-------------------------------+------+-----
+ Miss Jerry                    | 1894 | old
+ The Corbett-Fitzsimmons Fight | 1897 | old
+ Bohemios                      | 1905 | old
+ The Story of the Kelly Gang   | 1906 | old
+ The Prodigal Son              | 1907 | old
+(5 rows)
+
+Time: 7.398 ms
+        title         | year 
+----------------------+------
+ Flipside             | 2032
+ The Edwin Show: Home | 2031
+ Avatar 5             | 2031
+ The End of Us        | 2030
+ Orion                | 2030
+(5 rows)
+
+Time: 0.165 ms
+              title              | year 
+---------------------------------+------
+ Flipside                        | 2032
+ Avatar 5                        | 2031
+ The Edwin Show: Home            | 2031
+ A Journey Through Broken Dreams | 2030
+ Orion                           | 2030
+(5 rows)
+
+Time: 0.151 ms
+ decade | number_of_movies 
+--------+------------------
+   2000 |            78599
+   1960 |            31876
+   2020 |           116165
+   1940 |            14748
+   2030 |                7
+(5 rows)
+
+Time: 232.008 ms
+ initial | first_year 
+---------+------------
+ #       |       1898
+ A       |       1898
+ Á       |       1915
+ À       |       1922
+ Â       |       1918
+(5 rows)
+
+Time: 237.018 ms
+                   title                    | decade | year | rn 
+--------------------------------------------+--------+------+----
+ 2nd Company Governor's Footguards, Conn.   |   1890 | 1899 |  1
+ A Football Tackle                          |   1890 | 1899 |  2
+ A Procissão da Semana Santa                |   1890 | 1899 |  3
+ Jeffries-Sharkey Contest                   |   1890 | 1899 |  4
+ O Cortejo da Procissão da Senhora da Saúde |   1890 | 1899 |  5
+(5 rows)
+
+Time: 374.076 ms
+
+--- [测试 2.2] openGauss：JOIN 查询 (有索引) ---
+  > 重启容器以清空缓存...
+  > 正在创建索引...
+[openGauss create-index] stmt 1 time: 61030 ms
+[openGauss create-index] stmt 2 time: 14199 ms
+[openGauss create-index] stmt 3 time: 3225 ms
+[openGauss create-index] stmt 4 time: 17 ms
+[openGauss create-index] stmt 5 time: 17 ms
+  > 索引创建完毕，执行有索引 JOIN 查询...
+[openGauss with-index] stmt 1 time: 14 ms
+[openGauss with-index] stmt 2 time: 37 ms
+[openGauss with-index] stmt 3 time: 2439 ms
+[openGauss with-index] stmt 4 time: 2426 ms
+[openGauss with-index] stmt 5 time: 1706 ms
+[openGauss with-index] stmt 6 time: 1586 ms
+[openGauss with-index] stmt 7 time: 9167 ms
+[openGauss with-index] stmt 8 time: 8958 ms
+[openGauss with-index] stmt 9 time: 19 ms
+[openGauss with-index] stmt 10 time: 26 ms
+[openGauss with-index] stmt 11 time: 1468 ms
+[openGauss with-index] stmt 12 time: 1402 ms
+[openGauss with-index] stmt 13 time: 48 ms
+[openGauss with-index] stmt 14 time: 108 ms
+[openGauss with-index] stmt 15 time: 15 ms
+[openGauss with-index] stmt 16 time: 315 ms
+[openGauss with-index] stmt 17 time: 16 ms
+[openGauss with-index] stmt 18 time: 2121 ms
+[openGauss with-index] stmt 19 time: 299 ms
+[openGauss with-index] stmt 20 time: 1436 ms
+[openGauss with-index] stmt 21 time: 2226 ms
+[openGauss with-index] stmt 22 time: 16 ms
+[openGauss with-index] stmt 23 time: 31 ms
+[openGauss with-index] stmt 24 time: 12755 ms
+[openGauss with-index] stmt 25 time: 14 ms
+[openGauss with-index] stmt 26 time: 15 ms
+[openGauss with-index] stmt 27 time: 126 ms
+[openGauss with-index] stmt 28 time: 508 ms
+[openGauss with-index] stmt 29 time: 999 ms
+[openGauss with-index] stmt 30 time: 1861 ms
+
+--- [文件I/O对比说明] ---
+  > 对于关系型JOIN操作，简单的文件I/O没有直接、高效的对应方法。
+
+
+################# 所有实验已完成 #################
+详细结果已保存在 experiment_results.log 文件中。
